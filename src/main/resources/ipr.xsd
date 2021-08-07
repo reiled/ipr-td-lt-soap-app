@@ -1,0 +1,60 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ipr.pflb.ru/soap"
+           targetNamespace="http://ipr.pflb.ru/soap" elementFormDefault="qualified">
+
+    <xs:element name="getRandomNumberRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="leftBound" type="xs:double"/>
+                <xs:element name="rightBound" type="xs:double"/>
+                <xs:element name="decimalPlaces" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRandomNumberResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="randomNumber" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRandomLineFromFileRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="path" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRandomLineFromFileResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="randomLine" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="echoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="param1" type="xs:string"/>
+                <xs:element name="param2" type="xs:string"/>
+                <xs:element name="param3" type="xs:string"/>
+                <xs:element name="param4" type="xs:string"/>
+                <xs:element name="param5" type="xs:string"/>
+                <xs:element name="echoParamName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="echoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paramName" type="xs:string"/>
+                <xs:element name="value" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
