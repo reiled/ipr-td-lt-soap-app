@@ -26,6 +26,7 @@ public class FileReaderEndpoint {
     @ResponsePayload
     public GetRandomLineFromFileResponse getRandomNumber(@RequestPayload GetRandomLineFromFileRequest request) {
         Assert.isTrue(fileReaderUtils.isPathAvailable(request.getPath()), "Path is not available (" + request.getPath() + ")");
+        Assert.isTrue(request.getPath().contains(".."), "Usage of directory '..' is not allowed");
 
         GetRandomLineFromFileResponse response = new ObjectFactory().createGetRandomLineFromFileResponse();
         response.setRandomLine(FileReaderUtils.readRandomLineFromFile(request.getPath()));
