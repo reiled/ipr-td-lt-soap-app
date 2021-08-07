@@ -25,11 +25,11 @@ public class FileReaderEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getRandomLineFromFileRequest")
     @ResponsePayload
     public GetRandomLineFromFileResponse getRandomNumber(@RequestPayload GetRandomLineFromFileRequest request) {
-        Assert.isTrue(fileReaderUtils.isPathAvailable(request.getPath()), "Path is not available (" + request.getPath() + ")");
-        Assert.isTrue(request.getPath().contains("../") || request.getPath().contains("..\\"), "Usage of directory '..' is not allowed");
+        String path = request.getPath().replace("../", "").replace("..\\", "");
+        Assert.isTrue(fileReaderUtils.isPathAvailable(path), "Path is not available (" + path + ")");
 
         GetRandomLineFromFileResponse response = new ObjectFactory().createGetRandomLineFromFileResponse();
-        response.setRandomLine(FileReaderUtils.readRandomLineFromFile(request.getPath()));
+        response.setRandomLine(FileReaderUtils.readRandomLineFromFile(path));
         return response;
     }
 }
